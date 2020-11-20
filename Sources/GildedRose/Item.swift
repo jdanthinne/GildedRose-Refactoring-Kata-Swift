@@ -22,9 +22,9 @@ extension Item {
     func setQuality(by operation: QualityOperation) {
         switch operation {
         case .increasing:
-            quality += 1
+            quality = min(quality + 1, Self.maximumQuality)
         case .decreasing:
-            quality -= 1
+            quality = max(quality - 1, 0)
         case .zero:
             quality = 0
         }
