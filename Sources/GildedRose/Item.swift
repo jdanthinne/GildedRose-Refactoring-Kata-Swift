@@ -10,6 +10,10 @@ public class Item {
     }
 }
 
+extension Item {
+    static let maximumQuality: Int = 50
+}
+
 extension Item: CustomStringConvertible {
     public var description: String {
         return self.name + ", " + String(self.sellIn) + ", " + String(self.quality);

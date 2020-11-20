@@ -45,12 +45,12 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(2, app.items[0].quality);
     }
     
-    /// The Quality of an item is never more than 50.
+    /// The Quality of an item is never more than the maximum quality.
     func testMaximumQuality() {
-        let items = [Item(name: "Aged Brie", sellIn: 0, quality: 50)]
+        let items = [Item(name: "Aged Brie", sellIn: 0, quality: Item.maximumQuality)]
         let app = GildedRose(items: items);
         app.updateQuality();
-        XCTAssertEqual(50, app.items[0].quality);
+        XCTAssertEqual(Item.maximumQuality, app.items[0].quality);
     }
     
     /// "Sulfuras", being a legendary item, never has to be sold or decreases in Quality.
