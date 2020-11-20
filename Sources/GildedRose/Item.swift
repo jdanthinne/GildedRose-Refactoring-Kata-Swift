@@ -29,6 +29,17 @@ extension Item {
             quality = 0
         }
     }
+    
+    /// Helpers method to check type
+    var isAgedBrie: Bool {
+        name == "Aged Brie"
+    }
+    var isBackstagePass: Bool {
+        name.starts(with: "Backstage pass")
+    }
+    var isSulfuras: Bool {
+        name.starts(with: "Sulfuras")
+    }
 }
 
 extension Item: CustomStringConvertible {

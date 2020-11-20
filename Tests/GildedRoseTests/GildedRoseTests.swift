@@ -91,6 +91,17 @@ class GildedRoseTests: XCTestCase {
         item.setQuality(by: .zero)
         XCTAssertEqual(0, item.quality);
     }
+    
+    func testItemTypes() {
+        let agedBrie = Item(name: "Aged Brie", sellIn: 0, quality: 0)
+        XCTAssertTrue(agedBrie.isAgedBrie);
+        
+        let backstagePasses = Item(name: "Backstage passes for U2", sellIn: 0, quality: 0)
+        XCTAssertTrue(backstagePasses.isBackstagePass);
+        
+        let sulfuras = Item(name: "Sulfuras", sellIn: 0, quality: 0)
+        XCTAssertTrue(sulfuras.isSulfuras);
+    }
 
     static var allTests : [(String, (GildedRoseTests) -> () throws -> Void)] {
         return [
@@ -102,6 +113,8 @@ class GildedRoseTests: XCTestCase {
             ("testMaximumQuality", testMaximumQuality),
             ("testSulfuras", testSulfuras),
             ("testBackstagePasses", testBackstagePasses),
+            ("testItemQualityChange", testBackstagePasses),
+            ("testItemTypes", testBackstagePasses),
         ]
     }
 }
