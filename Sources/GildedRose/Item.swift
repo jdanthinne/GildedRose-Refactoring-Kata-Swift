@@ -24,10 +24,14 @@ extension Item {
         case .increasing:
             quality = min(quality + 1, Self.maximumQuality)
         case .decreasing:
-            quality = max(quality - 1, 0)
+            quality = max(quality - qualityDecreaseFactor, 0)
         case .zero:
             quality = 0
         }
+    }
+    
+    var qualityDecreaseFactor: Int {
+        isConjured ? 2 : 1
     }
     
     /// Helpers method to check type
@@ -39,6 +43,9 @@ extension Item {
     }
     var isSulfuras: Bool {
         name.starts(with: "Sulfuras")
+    }
+    var isConjured: Bool {
+        name.starts(with: "Conjured")
     }
 }
 

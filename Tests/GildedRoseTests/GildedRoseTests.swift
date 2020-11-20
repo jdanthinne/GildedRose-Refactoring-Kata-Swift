@@ -78,6 +78,14 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(0, app.items[2].quality);
     }
     
+    /// "Conjured" items degrade in Quality twice as fast as normal items.
+    func testConjuredItems() {
+        let items = [Item(name: "Conjured Mana Cake", sellIn: 2, quality: 2)]
+        let app = GildedRose(items: items);
+        app.updateQuality();
+        XCTAssertEqual(0, app.items[0].quality);
+    }
+    
     // MARK: - Test Item model methods
 
     func testItemQualityChange() {
@@ -101,6 +109,9 @@ class GildedRoseTests: XCTestCase {
         
         let sulfuras = Item(name: "Sulfuras", sellIn: 0, quality: 0)
         XCTAssertTrue(sulfuras.isSulfuras);
+        
+        let conjured = Item(name: "Conjured Cake", sellIn: 0, quality: 0)
+        XCTAssertTrue(conjured.isConjured);
     }
 
     static var allTests : [(String, (GildedRoseTests) -> () throws -> Void)] {
@@ -113,8 +124,9 @@ class GildedRoseTests: XCTestCase {
             ("testMaximumQuality", testMaximumQuality),
             ("testSulfuras", testSulfuras),
             ("testBackstagePasses", testBackstagePasses),
-            ("testItemQualityChange", testBackstagePasses),
-            ("testItemTypes", testBackstagePasses),
+            ("testItemQualityChange", testItemQualityChange),
+            ("testItemTypes", testItemTypes),
+            ("testConjuredItems", testConjuredItems)
         ]
     }
 }
