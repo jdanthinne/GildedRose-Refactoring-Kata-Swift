@@ -6,40 +6,40 @@ public class GildedRose {
     }
     
     public func updateQuality() {
-        for i in 0..<items.count {
-            if !items[i].isAgedBrie && !items[i].isBackstagePass {
-                if !items[i].isSulfuras {
-                    items[i].setQuality(by: .decreasing)
+        items.forEach { item in
+            if !item.isAgedBrie, !item.isBackstagePass {
+                if !item.isSulfuras {
+                    item.setQuality(by: .decreasing)
                 }
             } else {
-                items[i].setQuality(by: .increasing)
+                item.setQuality(by: .increasing)
                 
-                if items[i].isBackstagePass {
-                    if (items[i].sellIn < 11) {
-                        items[i].setQuality(by: .increasing)
+                if item.isBackstagePass {
+                    if (item.sellIn < 11) {
+                        item.setQuality(by: .increasing)
                     }
                     
-                    if (items[i].sellIn < 6) {
-                        items[i].setQuality(by: .increasing)
+                    if (item.sellIn < 6) {
+                        item.setQuality(by: .increasing)
                     }
                 }
             }
             
-            if !items[i].isSulfuras {
-                items[i].sellIn = items[i].sellIn - 1
+            if !item.isSulfuras {
+                item.sellIn = item.sellIn - 1
             }
             
-            if (items[i].sellIn < 0) {
-                if !items[i].isAgedBrie {
-                    if !items[i].isBackstagePass {
-                        if !items[i].isSulfuras {
-                            items[i].setQuality(by: .decreasing)
+            if item.sellIn < 0 {
+                if !item.isAgedBrie {
+                    if !item.isBackstagePass {
+                        if !item.isSulfuras {
+                            item.setQuality(by: .decreasing)
                         }
                     } else {
-                        items[i].setQuality(by: .zero)
+                        item.setQuality(by: .zero)
                     }
                 } else {
-                    items[i].setQuality(by: .increasing)
+                    item.setQuality(by: .increasing)
                 }
             }
         }
