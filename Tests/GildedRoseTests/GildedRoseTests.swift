@@ -77,6 +77,20 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(3, app.items[1].quality);
         XCTAssertEqual(0, app.items[2].quality);
     }
+    
+    // MARK: - Test Item model methods
+
+    func testItemQualityChange() {
+        let item = Item(name: "foo", sellIn: 5, quality: 5)
+        item.setQuality(by: .increasing)
+        XCTAssertEqual(6, item.quality);
+
+        item.setQuality(by: .decreasing)
+        XCTAssertEqual(5, item.quality);
+
+        item.setQuality(by: .zero)
+        XCTAssertEqual(0, item.quality);
+    }
 
     static var allTests : [(String, (GildedRoseTests) -> () throws -> Void)] {
         return [

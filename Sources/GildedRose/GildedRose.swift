@@ -10,23 +10,23 @@ public class GildedRose {
             if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
                 if (items[i].quality > 0) {
                     if (items[i].name != "Sulfuras, Hand of Ragnaros") {
-                        items[i].quality = items[i].quality - 1
+                        items[i].setQuality(by: .decreasing)
                     }
                 }
             } else {
                 if (items[i].quality < Item.maximumQuality) {
-                    items[i].quality = items[i].quality + 1
+                    items[i].setQuality(by: .increasing)
                     
                     if (items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
                         if (items[i].sellIn < 11) {
                             if (items[i].quality < Item.maximumQuality) {
-                                items[i].quality = items[i].quality + 1
+                                items[i].setQuality(by: .increasing)
                             }
                         }
                         
                         if (items[i].sellIn < 6) {
                             if (items[i].quality < Item.maximumQuality) {
-                                items[i].quality = items[i].quality + 1
+                                items[i].setQuality(by: .increasing)
                             }
                         }
                     }
@@ -42,15 +42,15 @@ public class GildedRose {
                     if (items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
                         if (items[i].quality > 0) {
                             if (items[i].name != "Sulfuras, Hand of Ragnaros") {
-                                items[i].quality = items[i].quality - 1
+                                items[i].setQuality(by: .decreasing)
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality
+                        items[i].setQuality(by: .zero)
                     }
                 } else {
                     if (items[i].quality < Item.maximumQuality) {
-                        items[i].quality = items[i].quality + 1
+                        items[i].setQuality(by: .increasing)
                     }
                 }
             }
